@@ -1,0 +1,88 @@
+--
+-- MySQL 5.5.49
+-- Sat, 07 May 2016 10:14:15 +0000
+--
+
+CREATE TABLE `capital` (
+   `id` int(10) unsigned not null auto_increment,
+   `type` char(1) not null default '0',
+   `owner` int(10) unsigned default '0',
+   `name` tinytext not null,
+   `x` int(11) not null default '0',
+   `y` int(11) not null default '0',
+   `z` int(11) not null default '0',
+   PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1;
+
+-- [Table `capital` is empty]
+
+CREATE TABLE `cars` (
+   `id` int(10) unsigned not null auto_increment,
+   `model` tinytext not null,
+   `color` tinytext not null,
+   `owner` int(10) unsigned not null default '0',
+   `chunk` tinytext,
+   `x` int(11) not null default '0',
+   `y` int(11) not null default '0',
+   `z` int(11) not null default '0',
+   `r` double not null default '0',
+   `interior` tinytext,
+   PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=14;
+
+INSERT INTO `cars` (`id`, `model`, `color`, `owner`, `chunk`, `x`, `y`, `z`, `r`, `interior`) VALUES ('1', 'Furore GT', 'lightblue', '0', '0', '288', '226', '64', '-0.002', '');
+INSERT INTO `cars` (`id`, `model`, `color`, `owner`, `chunk`, `x`, `y`, `z`, `r`, `interior`) VALUES ('2', 'Minx', 'green', '0', '', '98', '232', '64', '3.14', '');
+INSERT INTO `cars` (`id`, `model`, `color`, `owner`, `chunk`, `x`, `y`, `z`, `r`, `interior`) VALUES ('3', 'Aniston BD4', 'red', '0', '', '159', '233', '64', '0', '');
+INSERT INTO `cars` (`id`, `model`, `color`, `owner`, `chunk`, `x`, `y`, `z`, `r`, `interior`) VALUES ('5', 'Icecream', '', '0', '', '316', '121', '64', '0', '');
+INSERT INTO `cars` (`id`, `model`, `color`, `owner`, `chunk`, `x`, `y`, `z`, `r`, `interior`) VALUES ('6', 'Truck', '', '0', '', '-172', '222', '64', '1.57', '');
+INSERT INTO `cars` (`id`, `model`, `color`, `owner`, `chunk`, `x`, `y`, `z`, `r`, `interior`) VALUES ('7', 'Wellard', 'orange', '0', '', '-1014', '1365', '64', '-1.388', '');
+INSERT INTO `cars` (`id`, `model`, `color`, `owner`, `chunk`, `x`, `y`, `z`, `r`, `interior`) VALUES ('8', 'Wellard', 'orange', '0', '', '252', '382', '64', '1.5468697502527013', '');
+INSERT INTO `cars` (`id`, `model`, `color`, `owner`, `chunk`, `x`, `y`, `z`, `r`, `interior`) VALUES ('9', 'Miara', 'yellow', '0', '0', '223', '226', '64', '0', '');
+INSERT INTO `cars` (`id`, `model`, `color`, `owner`, `chunk`, `x`, `y`, `z`, `r`, `interior`) VALUES ('10', 'Minx', 'green', '0', '', '2587', '157', '64', '-4.73', '');
+INSERT INTO `cars` (`id`, `model`, `color`, `owner`, `chunk`, `x`, `y`, `z`, `r`, `interior`) VALUES ('11', 'Minx', 'green', '0', '', '2309', '137', '64', '-0.937', 'Decent Cars');
+INSERT INTO `cars` (`id`, `model`, `color`, `owner`, `chunk`, `x`, `y`, `z`, `r`, `interior`) VALUES ('12', 'Pickup', 'beige', '0', '', '2309', '77', '64', '-0.937', 'Decent Cars');
+INSERT INTO `cars` (`id`, `model`, `color`, `owner`, `chunk`, `x`, `y`, `z`, `r`, `interior`) VALUES ('13', 'Bug', 'blue', '0', '', '1052', '550', '64', '-4.77', '');
+
+CREATE TABLE `players` (
+   `id` int(10) unsigned not null auto_increment,
+   `google` int(10) unsigned not null default '0',
+   `x` int(11) not null default '0',
+   `y` int(11) not null default '0',
+   `z` int(11) not null default '0',
+   `r` double not null default '0',
+   PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1;
+
+-- [Table `players` is empty]
+
+CREATE TABLE `visuals` (
+   `id` int(10) unsigned not null auto_increment,
+   `type` tinytext not null,
+   `x` int(11) not null,
+   `y` int(11) not null,
+   `z` int(11) not null,
+   `r` double not null default '0',
+   `interior` tinytext,
+   `vjson` tinytext,
+   PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=20;
+
+INSERT INTO `visuals` (`id`, `type`, `x`, `y`, `z`, `r`, `interior`, `vjson`) VALUES ('1', 'Incubator', '-241', '412', '64', '1.57', 'Brick room', '');
+INSERT INTO `visuals` (`id`, `type`, `x`, `y`, `z`, `r`, `interior`, `vjson`) VALUES ('2', 'Generator', '-110', '402', '64', '1.54', '', '');
+INSERT INTO `visuals` (`id`, `type`, `x`, `y`, `z`, `r`, `interior`, `vjson`) VALUES ('3', 'Worklight', '-66', '428', '64', '-0.167', '', '');
+INSERT INTO `visuals` (`id`, `type`, `x`, `y`, `z`, `r`, `interior`, `vjson`) VALUES ('4', 'Lab Freezer', '-205', '432', '64', '0', 'Brick room', '');
+INSERT INTO `visuals` (`id`, `type`, `x`, `y`, `z`, `r`, `interior`, `vjson`) VALUES ('5', 'Vacuum Oven', '-180', '432', '64', '0', 'Brick room', '');
+INSERT INTO `visuals` (`id`, `type`, `x`, `y`, `z`, `r`, `interior`, `vjson`) VALUES ('6', 'Teleporter', '-192', '385', '64', '0', 'Brick room', '');
+INSERT INTO `visuals` (`id`, `type`, `x`, `y`, `z`, `r`, `interior`, `vjson`) VALUES ('7', 'Terminal', '-243', '370', '64', '-4.7', 'Brick room', '');
+INSERT INTO `visuals` (`id`, `type`, `x`, `y`, `z`, `r`, `interior`, `vjson`) VALUES ('8', 'AS Val', '220', '400', '64', '0', '', '');
+INSERT INTO `visuals` (`id`, `type`, `x`, `y`, `z`, `r`, `interior`, `vjson`) VALUES ('9', 'Carbon Knife', '230', '400', '64', '0', '', '');
+INSERT INTO `visuals` (`id`, `type`, `x`, `y`, `z`, `r`, `interior`, `vjson`) VALUES ('10', 'Dumpster', '-25', '432', '64', '-6.26', '', '{}');
+INSERT INTO `visuals` (`id`, `type`, `x`, `y`, `z`, `r`, `interior`, `vjson`) VALUES ('11', 'Dumpster', '-79', '546', '64', '-1.55', '', '');
+INSERT INTO `visuals` (`id`, `type`, `x`, `y`, `z`, `r`, `interior`, `vjson`) VALUES ('12', 'Vending Machine', '2740', '164', '64', '-1.57079632679', '', '');
+INSERT INTO `visuals` (`id`, `type`, `x`, `y`, `z`, `r`, `interior`, `vjson`) VALUES ('13', 'M4A1', '2675', '174', '64', '0', '', '');
+INSERT INTO `visuals` (`id`, `type`, `x`, `y`, `z`, `r`, `interior`, `vjson`) VALUES ('14', 'ATM', '2677', '32', '64', '-1.57079632679', '', '');
+INSERT INTO `visuals` (`id`, `type`, `x`, `y`, `z`, `r`, `interior`, `vjson`) VALUES ('15', 'ATM', '2677', '64', '64', '-1.57079632679', '', '');
+INSERT INTO `visuals` (`id`, `type`, `x`, `y`, `z`, `r`, `interior`, `vjson`) VALUES ('16', 'ATM', '2677', '96', '64', '-1.57079632679', '', '');
+INSERT INTO `visuals` (`id`, `type`, `x`, `y`, `z`, `r`, `interior`, `vjson`) VALUES ('17', 'Vending Machine', '1184', '436', '64', '-6.278', '', '');
+INSERT INTO `visuals` (`id`, `type`, `x`, `y`, `z`, `r`, `interior`, `vjson`) VALUES ('18', 'ATM', '1013', '608', '64', '-1.57079632679', '', '');
+INSERT INTO `visuals` (`id`, `type`, `x`, `y`, `z`, `r`, `interior`, `vjson`) VALUES ('19', 'ATM', '1013', '640', '64', '-1.57079632679', '', '');

@@ -1,0 +1,77 @@
+/* 
+	Document   : ssc
+	Created on : Jan 8, 2014, 3:49:48 PM
+	Author     : Petrus
+	Description:
+		Purpose of the stylesheet follows.
+*/
+
+@font-face {
+	font-family: 'inconsolata';
+	src: url('../Inconsolata-Regular.woff') format('woff');
+	font-weight: normal;
+	font-style: normal;
+}
+
+root { 
+	display: block;
+}
+
+inconsolata, [inconsolata] {
+	font-family: Inconsolata;
+}
+
+body {
+	font-size: 14px;
+	color: #555;
+	text-shadow: 1px 1px 0 rgb(252, 252, 252);
+}
+
+city {
+	font-family: Georgia;
+	font-size: 17px;
+	background: rgb(240, 240, 240);
+	border-radius: 4px;
+	border-bottom-right-radius: 0;
+	border-bottom-left-radius: 0;
+	border: 1px solid #E9E9E9;
+	border-bottom: 0;
+	padding: 0 4px 0 4px;
+}
+
+map {
+	display: block;
+
+	text-shadow: none;
+	color: white;
+}
+
+map table {
+	background: black;
+	overflow: hidden;
+}
+
+map table td {
+	position: relative;
+	padding: 0;
+	width: 32px;
+	height: 32px;
+}
+
+map table td img {
+	position: absolute;
+	display: block;
+	top: 0;
+	left: 0;
+	width: inherit;
+	height: inherit;
+}
+
+
+span.floatt {
+	position: absolute;
+	width: inherit;
+	height: inherit;
+	text-align: center;
+	vertical-align: middle;
+}

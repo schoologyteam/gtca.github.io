@@ -1,0 +1,66 @@
+root { 
+	display: block;
+}
+
+body {
+	font-family: 'Segoe UI', 'Segoe UI Light';
+	font-size: 24px;
+	color: white;
+	background: #141419;
+}
+
+.descriptor {
+    position: absolute;
+    color: white;
+    font-family: Georgia;
+	color: white;
+	text-shadow: 1px 1px 0 rgba(0, 0, 0, 1);
+    font-size: 17px;
+    padding: 5px;
+    width: 300px;
+    box-sizing: border-box;
+    background: #141419;
+    bbackground: #2b2b35;
+    bbackground: #2b2b35;
+}
+
+.armory {
+	bbackground: gray;
+	xmargin-top: 100px;
+}
+
+.types {
+	width: 100%;
+	font-size: 0;
+	white-space: nowrap;
+}
+
+.types.name {
+
+}
+
+.types .type {
+	box-sizing: border-box;
+	margin: 0;
+	padding: 0;
+	overflow-x: auto;
+	overflow-y: hidden;
+}
+
+.wep {
+	display: inline-block;
+	width: 256px;
+	height: 256px;
+	color: white;
+	font-family: Courier;
+	font-size: 11px;
+	position: relative;
+}
+
+.wep .stat {
+	ddisplay: inline-block;
+}
+
+.wep .marketvalue {
+	color: gainsboro;
+}

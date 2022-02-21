@@ -1,0 +1,252 @@
+class gg.Zombie extends gg.Sprite
+	constructor: (props) ->
+
+		props.z = 64 if not props.z?
+
+		outfit = 
+		switch props.states.o
+			when 1 then 'green'
+			when 2 then 'darker'
+			when 3 then 'scrub'
+
+		sprite =
+			elevation: 3
+			path: "nontile/zombies/#{outfit}.png"
+			normal: true
+			hasShadow: true
+			sprite:
+				width: 29
+				height: 29
+			sheet:
+				width: 261
+				height: 464
+
+		@understeer = true
+
+		super props, sprite
+
+		@build()
+
+		@swinging = false
+		@recoil = false
+		@floored = null
+
+		n = sprite.sheet.height / 29
+		f = 1 / n
+		
+		m = .11
+
+		@other =		frames: 8, moment:.08,y: f * --n
+		@walk =			frames: 8, moment: m, y: f * --n, start: 5
+		@run =			frames: 8, moment:.08,y: f * --n, start: 5
+		@punch =		frames: 8, moment: m, y: f * --n, start: 4
+		@walkpunch =	frames: 8, moment: m, y: f * --n, start: 4
+		@runpunch =		frames: 8, moment:.08,y: f * --n, start: 4
+		@slash =		frames: 8, moment: m, y: f * --n, inverse: true, start: 3
+		@walkslash =	frames: 8, moment: m, y: f * --n, inverse: true, start: 3
+		@runslash =		frames: 8, moment:.08,y: f * --n, inverse: true, start: 3
+		@walkgun =		frames: 8, moment: m, y: f * --n
+		@rungun =		frames: 8, moment:.08,y: f * --n
+		@walkrifle =	frames: 8, moment: m, y: f * --n
+		@runrifle =		frames: 8, moment:.08,y: f * --n
+		@falls = 							  y: f * --n
+		@eat =			frames: 8, moment:.15,y: f * --n
+
+		@state props, true
+
+		@dynamicBody = null
+
+		@embody() if props.states? and not props.states.d?
+
+	embody: ->
+		@bodyDef = new box2d.b2BodyDef()
+		@bodyDef.type = box2d.b2BodyType.b2_dynamicBody
+		@bodyDef.allowSleep = false
+
+		@circleShape = new box2d.b2CircleShape 4.1 / gg.scaling
+
+		@fixtureDef = new box2d.b2FixtureDef
+		@fixtureDef.shape = @circleShape
+		@fixtureDef.density = 1
+		@fixtureDef.filter.categoryBits = gg.masks.organic
+		@fixtureDef.filter.maskBits = gg.masks.solid | gg.masks.organic
+
+		@bodyDef.position.Set @props.x / gg.scaling, @props.y / gg.scaling
+		
+		@dynamicBody = gg.world.CreateBody @bodyDef
+		@dynamicBody.SetTransform @dynamicBody.GetPosition(), @props.r
+		@fixture = @dynamicBody.CreateFixture @fixtureDef
+		true
+
+	dtor: ->
+		gg.world.DestroyBody @dynamicBody if @dynamicBody?
+		super
+		true
+
+	step: ->
+		super
+
+		if @r >= gg.C.PII
+			@r = @r - gg.C.PII
+		else if @r <= 0
+			@r = gg.C.PII - @r
+
+		if @dynamicBody?
+			@dynamicBody.SetPosition new box2d.b2Vec2 @props.x / gg.scaling, @props.y / gg.scaling
+			@dynamicBody.SetTransform @dynamicBody.GetPosition(), @props.r
+			@dynamicBody.SetAngularVelocity 0
+			@dynamicBody.SetLinearVelocity new box2d.b2Vec2 0, 0
+
+		if @walking
+			@walking = false if Math.abs(@adds[0]) < .05 and Math.abs(@adds[1]) < .05
+		else
+			@walking = Math.abs(@adds[0]) > .08 or Math.abs(@adds[1]) > .08
+
+		if @running
+			@running = false if Math.abs(@adds[0]) < .18 and Math.abs(@adds[1]) < .18
+		else
+			@running = Math.abs(@adds[0]) > .55 or Math.abs(@adds[1]) > .55
+
+		@animate()
+		@pose()
+
+		true
+
+	state: (o, first) ->
+		if o.states?
+			
+			if o.states.h?
+				gg.play gg.sounds.kungfu[ o.states.h ], this
+				
+			if o.states.d?
+				@dead = true
+				@frame 4, @falls.y
+
+				@sprite.elevation = 1
+				@shadow.visible = false
+
+				gg.world.DestroyBody @dynamicBody if @dynamicBody?
+				@dynamicBody = null
+
+				if not first
+					gg.play gg.sounds.screams[ o.states.d ], this
+				
+			if o.states.f?
+				@floored = o.states.f
+				@sprite.elevation = 1
+				@shadow.visible = false
+
+				gg.world.DestroyBody @dynamicBody if @dynamicBody?
+				@dynamicBody = null
+
+			if o.states.u?
+				@eating = false
+				@swinging = false
+				@recoil = false
+
+				@floored = null
+				@falls.i = 0
+
+				@sprite.elevation = 2
+				@shadow.visible = true
+
+				@embody()
+
+			if o.states.s?
+				@eating = false
+
+				@swinging = true
+				@recoil = false
+
+				gg.anim.call @punch, true
+				gg.anim.call @walkpunch, true
+				gg.anim.call @runpunch, true
+
+				# delete o.states.s
+
+			if o.states.e?
+				@eating = true
+
+				gg.anim.call @eat, true
+		true
+
+	patch: (o) ->
+		super o
+
+		@state o
+		
+		true
+
+	attack: ->
+		
+		true
+
+	animate: ->
+		# todo: rewrite this a bit
+
+		if @dead
+			@pose()
+			return
+
+		frame = 0
+		anim = @other
+
+		if @floored?
+			@frame @floored, @falls.y
+			return
+
+		else if @walking or @running
+
+			if @swinging
+				if not @running
+					anim = @walkpunch
+
+				else
+					anim = @runpunch
+
+				gg.anim.call anim
+
+				@punch.i = anim.i
+				@punch.timer = anim.timer
+				@walkpunch.i = anim.i
+				@walkpunch.timer = anim.timer
+				@runpunch.i = anim.i
+				@runpunch.timer = anim.timer
+
+				gg.anim.call @eat, true
+
+			else
+				anim = if not @running then @walk else @run
+			
+				gg.anim.call anim
+
+		else if @eating
+			anim = @eat
+			gg.anim.call anim
+
+			if anim.i is 7
+				console.log 'no eat'
+				@eating = false
+
+		else
+			gg.anim.call @walk, true
+			gg.anim.call @run, true
+
+			if @swinging
+				anim = @punch
+				gg.anim.call anim
+
+		frame = anim.i if anim.i?
+
+		if @swinging
+
+			if not @recoil and anim.i is 1
+				@recoil = true
+
+			else if @recoil and anim.i is 6
+				@swinging = false
+				@recoil = false
+
+		@frame frame, anim.y
+
+		true

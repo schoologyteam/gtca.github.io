@@ -1,0 +1,444 @@
+{
+	"M9": {
+		"sty": "m9_fancy",
+		"type": "Handgun",
+		"magazine": 11,
+		"damage": 20,
+		"accuracy": 0.65,
+		"recoil": 0.3,
+		"range": 0.4,
+		"firerate": 5,
+		"description": "Basest of weps. If you whip this out you will not make a statement.",
+		"value": 200
+	},
+
+	"M1911": {
+		"sty": "m1911_fancy",
+		"type": "Handgun",
+		"magazine": 7,
+		"damage": 25,
+		"accuracy": 0.75,
+		"recoil": 0.5,
+		"range": 0.5,
+		"firerate": 6,
+		"description": "Slow-firing handgun. Step back and kite.",
+		"value": 350
+	},
+
+	"MP412 REX": {
+		"sty": "mp412rex_fancy",
+		"type": "Handgun",
+		"magazine": 6,
+		"damage": 30,
+		"accuracy": 0.7,
+		"recoil": 0.6,
+		"range": 0.45,
+		"firerate": 7,
+		"description": "Basic revolver.",
+		"value": 300
+	},
+
+	"FN 57": {
+		"sty": "fn57_fancy",
+		"type": "Handgun",
+		"magazine": 11,
+		"damage": 25,
+		"accuracy": 0.7,
+		"recoil": 0.35,
+		"range": 0.45,
+		"firerate": 4,
+		"description": "Fast-firing handgun.",
+		"value": 500
+	},
+
+	"Compact 45": {
+		"sty": "hk45c_fancy",
+		"type": "Handgun",
+		"magazine": 11,
+		"damage": 30,
+		"accuracy": 0.7,
+		"recoil": 0.45,
+		"range": 0.45,
+		"firerate": 5,
+		"description": "Balanced handgun.",
+		"value": 550
+	},
+
+	".44 Magnum": {
+		"sty": "taurus44_fancy",
+		"type": "Handgun",
+		"magazine": 6,
+		"damage": 60,
+		"accuracy": 0.8,
+		"recoil": 1.0,
+		"range": 0.65,
+		"firerate": 10,
+		"description": "For the bitter, skilled skirmisher.",
+		"value": 1000
+	},
+
+	"Desert Eagle": {
+		"sty": "deserteagle_fancy",
+		"type": "Handgun",
+		"magazine": 6,
+		"damage": 50,
+		"accuracy": 0.75,
+		"recoil": 1.0,
+		"range": 0.6,
+		"firerate": 8,
+		"description": "Nice to have. Does not come in chrome.",
+		"value": 1200
+	},
+
+	"JS2": {
+		"sty": "js2_fancy",
+		"type": "SMG",
+		"magazine": 30,
+		"damage": 15,
+		"accuracy": 0.5,
+		"recoil": 0.45,
+		"range": 0.4,
+		"firerate": 1,
+		"description": "An inexpensive auto, but rather spray 'n pray. For (very) close quarters fighting.",
+		"value": 800
+	},
+
+	"UMP": {
+		"sty": "ump_fancy",
+		"type": "SMG",
+		"magazine": 30,
+		"damage": 20,
+		"accuracy": 0.6,
+		"recoil": 0.45,
+		"range": 0.45,
+		"firerate": 2,
+		"description": "A big mag and low output, useful for laying continuous fire. Very low recoil.",
+		"value": 900
+	},
+
+	"Magpul PDR": {
+		"sty": "magpulpdr_fancy",
+		"type": "Carbine",
+		"magazine": 25,
+		"damage": 20,
+		"accuracy": 0.65,
+		"recoil": 0.5,
+		"range": 0.4,
+		"firerate": 1,
+		"description": "Carbine-class d/ps with a heavy kick.",
+		"value": 1200,
+		"unlisted": false
+	},
+
+	"G36C": {
+		"sty": "g36c_fancy",
+		"type": "Carbine",
+		"magazine": 30,
+		"damage": 20,
+		"accuracy": 0.75,
+		"recoil": 0.55,
+		"range": 0.4,
+		"firerate": 1,
+		"description": "Good accuracy but an imposing spread. Poor range.",
+		"value": 1400
+	},
+
+	"M4A1": {
+		"sty": "m4a1_fancy",
+		"type": "Carbine",
+		"magazine": 30,
+		"damage": 20,
+		"accuracy": 0.65,
+		"recoil": 0.45,
+		"range": 0.45,
+		"firerate": 1,
+		"description": "The all-purpose auto.",
+		"value": 1500
+	},
+
+	"AS Val": {
+		"sty": "asval_fancy",
+		"type": "Carbine",
+		"magazine": 20,
+		"damage": 35,
+		"accuracy": 0.6,
+		"recoil": 0.6,
+		"range": 0.35,
+		"firerate": 1,
+		"description": "Russian subsonic scatter gun. Highest d/ps but scatter gun.",
+		"value": 2750
+	},
+
+	"Groza-1": {
+		"sty": "groza1_fancy",
+		"type": "SMG",
+		"magazine": 30,
+		"damage": 20,
+		"accuracy": 0.55,
+		"recoil": 0.5,
+		"range": 0.45,
+		"firerate": 1,
+		"description": "Spray 'n pray.",
+		"value": 1100,
+		"unlisted": true
+	},
+
+	"Groza-4": {
+		"sty": "groza4_fancy",
+		"type": "Carbine",
+		"magazine": 20,
+		"damage": 25,
+		"accuracy": 0.5,
+		"recoil": 0.45,
+		"range": 0.4,
+		"firerate": 1,
+		"description": "Integrally silenced. A specialist pick.",
+		"value": 1650
+	},
+
+	"AK-12": {
+		"sty": "ak12_fancy",
+		"type": "AR",
+		"magazine": 30,
+		"damage": 25,
+		"accuracy": 0.6,
+		"recoil": 0.6,
+		"range": 0.5,
+		"firerate": 1,
+		"description": "AR-class d/ps on full auto.",
+		"value": 1800
+	},
+
+	"AN-94": {
+		"sty": "an94_fancy",
+		"type": "AR",
+		"magazine": 25,
+		"damage": 30,
+		"accuracy": 0.75,
+		"recoil": 0.7,
+		"range": 0.6,
+		"firerate": 2,
+		"description": "Likened to the M16A4. For the elite Kalashnikover.",
+		"value": 2200
+	},
+
+	"AEK-971": {
+		"sty": "aek971_fancy",
+		"type": "AR",
+		"magazine": 30,
+		"damage": 30,
+		"accuracy": 0.65,
+		"recoil": 0.75,
+		"range": 0.5,
+		"firerate": 1,
+		"description": "Untamable, goes krrrkrrkrrrrr and you will hit nothing.",
+		"value": 2400
+	},
+
+	"HK416": {
+		"sty": "hk416_fancy",
+		"type": "AR",
+		"magazine": 30,
+		"damage": 25,
+		"accuracy": 0.7,
+		"recoil": 0.6,
+		"range": 0.55,
+		"firerate": 1,
+		"description": "Marketed as: \"not your avarage AR-15\". Least like a hose.",
+		"value": 2500
+	},
+
+	"M16A4": {
+		"sty": "m16a4_fancy",
+		"type": "AR",
+		"magazine": 20,
+		"damage": 30,
+		"accuracy": 0.8,
+		"recoil": 0.75,
+		"range": 0.7,
+		"firerate": 2,
+		"description": "The raucous call of this rifle will strike terror.",
+		"value": 3000
+	},
+
+	"SCAR-H": {
+		"sty": "scarh_fancy",
+		"type": "AR",
+		"magazine": 20,
+		"damage": 40,
+		"accuracy": 0.75,
+		"recoil": 0.8,
+		"range": 0.6,
+		"firerate": 2,
+		"description": "Just get the AK-12.",
+		"value": 3200
+	},
+
+	"Mare's Leg": {
+		"sty": "saddlegun_fancy",
+		"type": "Shotgun",
+		"magazine": 6,
+		"damage": 40,
+		"accuracy": 0.7,
+		"recoil": 0.6,
+		"range": 0.65,
+		"firerate": 15,
+		"description": "Saddlegun. Very low d/ps but everything else on this gun is great.",
+		"value": 700
+	},
+
+	"SPAS-12": {
+		"sty": "spas12_fancy",
+		"type": "Shotgun",
+		"magazine": 6,
+		"damage": 70,
+		"accuracy": 0.5,
+		"recoil": 1.0,
+		"range": 0.35,
+		"firerate": 10,
+		"description": "Pow shk-shk.",
+		"value": 2000
+	},
+
+	"SKS": {
+		"sty": "sks_fancy",
+		"type": "DMR",
+		"magazine": 7,
+		"damage": 40,
+		"accuracy": 0.7,
+		"recoil": 0.7,
+		"range": 0.7,
+		"firerate": 4,
+		"description": "Favored by old skool (old is cool) terrorists.",
+		"value": 2300
+	},
+
+	"SVD-12": {
+		"sty": "svd12_fancy",
+		"type": "DMR",
+		"magazine": 7,
+		"damage": 50,
+		"accuracy": 0.75,
+		"recoil": 0.75,
+		"range": 0.7,
+		"firerate": 7,
+		"description": "The hypothethical upgrade of the SVD.",
+		"value": 3000
+	},
+
+	"Mk 11": {
+		"sty": "mk11_fancy",
+		"type": "DMR",
+		"magazine": 7,
+		"damage": 45,
+		"accuracy": 0.85,
+		"recoil": 0.75,
+		"range": 0.75,
+		"firerate": 5,
+		"description": "For the navy seal turned bountyhunter.",
+		"value": 3200
+	},
+
+	"Scout Elite": {
+		"sty": "scoutelite_fancy",
+		"type": "Sniper",
+		"magazine": 4,
+		"damage": 60,
+		"accuracy": 0.9,
+		"recoil": 0.8,
+		"range": 0.8,
+		"firerate": 18,
+		"range": 0.90,
+		"description": "An affordable model. Most decent firerate of all snipers.",
+		"value": 2600
+	},
+
+	"M40A5": {
+		"sty": "m40a5_fancy",
+		"type": "Sniper",
+		"magazine": 5,
+		"damage": 85,
+		"accuracy": 0.95,
+		"recoil": 0.9,
+		"range": 0.9,
+		"firerate": 20,
+		"range": 0.90,
+		"description": "The middleman of snipers.",
+		"value": 3500
+	},
+
+	"Intervention": {
+		"sty": "m200_srr61_fancy",
+		"type": "Sniper",
+		"magazine": 4,
+		"damage": 160,
+		"accuracy": 0.95,
+		"recoil": 1.0,
+		"range": 1.0,
+		"firerate": 22,
+		"description": "Now I am become Death, the destroyer of worlds.",
+		"value": 5000
+	},
+
+	"RPG": {
+		"sty": "rpg7_fancy",
+		"type": "Launcher",
+		"magazine": 1,
+		"damage": 1000,
+		"accuracy": 1.0,
+		"recoil": 1.0,
+		"range": 1.0,
+		"firerate": 5.05,
+		"description": "Allahu akbar.",
+		"value": 100
+	},
+	
+	"Shank": {
+		"sty": "shank_fancy",
+		"type": "Knife",
+		"damage": 18,
+		"firerate": 7,
+		"value": 100
+	},
+
+	"Kitchen Knife": {
+		"sty": "knife_scout_fancy",
+		"type": "Knife",
+		"damage": 25,
+		"firerate": 7,
+		"value": 100
+	},
+
+	"Combat Knife": {
+		"sty": "knife_fancy",
+		"type": "Knife",
+		"damage": 30,
+		"firerate": 7,
+		"value": 100
+	},
+
+	"Carbon Knife": {
+		"sty": "knife_carbon_fancy",
+		"type": "Knife",
+		"damage": 35,
+		"firerate": 5,
+		"value": 100
+	},
+
+	"Machete": {
+		"sty": "machete_fancy",
+		"type": "Knife",
+		"damage": 55,
+		"firerate": 1,
+		"value": 100
+	},
+
+	"Dragon Knife": {
+		"sty": "knife_improvised_fancy",
+		"type": "Knife",
+		"damage": 70,
+		"firerate": 6,
+		"value": 100
+	}
+
+}

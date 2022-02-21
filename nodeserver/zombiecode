@@ -1,0 +1,481 @@
+class Zombie extends Visual
+	constructor: (props) ->
+		super props
+
+		gta.zombies.zombies++
+
+		@type = 'Zombie'
+
+		props.id = gta.zombies.idpool++
+
+		@id = "z#{@props.id}"
+
+		props.r = Math.random() * Math.PI
+		@aim = -1
+		@turn = 0
+		@bored = -1
+		@wander = -1
+
+		@barf = -1
+		@apetite = -1
+		@dined = -1
+		@unhungry = -1
+		@speak = -1
+
+		@swung = 0
+		@floored = 0
+		@impact = false
+
+		@outfit = 1 # + (Math.floor Math.random() * 3)
+		@state 'o', @outfit
+
+		@health = 100
+		@kill = false
+		@dead = false
+		@died = 0
+
+		@traits =
+			vigor: 0.5 + Math.random() * 0.5
+
+		@embody()
+		@bodiless = false
+
+		@reduce()
+
+		@rechunk()
+
+	# @Override
+	dtor: ->
+		console.log 'zombie dtor'
+
+		gta.zombies.zombies--
+
+		if @dynamicBody?
+			@dynamicBody.arbprop = null
+			gta.world.DestroyBody @dynamicBody
+
+		super
+		true
+
+	embody: ->
+		@bd = new box2d.Dynamics.b2BodyDef()
+		@bd.type = box2d.Dynamics.b2Body.b2_dynamicBody
+		@bd.position.Set @props.x / gta.scaling, @props.y / gta.scaling
+
+		@circleShape = new box2d.Collision.Shapes.b2CircleShape 6 / gta.scaling
+
+		fd = new box2d.Dynamics.b2FixtureDef
+		fd.shape = @circleShape
+		fd.density = 1
+		fd.filter.categoryBits = gta.masks.organic
+		fd.filter.maskBits = gta.masks.solid | gta.masks.organic
+		# @fd.friction = 0.4
+
+		@dynamicBody = gta.world.CreateBody @bd
+		@dynamicBody.SetAngle @props.r
+		@dynamicBody.SetUserData this
+		@fixture = @dynamicBody.CreateFixture fd
+
+		@dynamicBody.SetLinearDamping 2.3
+		@dynamicBody.SetAngularDamping 1.5
+		true
+
+	# @Override
+	whole: -> super
+
+	# @Override
+	#pack: ->
+		#a = super
+
+		#return a
+
+	# @Override
+	pose: ->
+		pos = @dynamicBody.GetPosition()
+		@props.x = pos.x * gta.scaling
+		@props.y = pos.y * gta.scaling
+
+		@props.r = @dynamicBody.GetAngle()
+
+		@reduce()
+
+		con = 	@before.reduced.x isnt @reduced.x or
+				@before.reduced.y isnt @reduced.y or
+				@before.reduced.r isnt @reduced.r or
+				@before.reduced.z isnt @reduced.z
+
+		@update() if con
+
+		true
+
+	# @Override
+	step: ->
+
+		@die() if @kill
+
+		@rot() if @dead
+
+		return if @dead
+
+		floored = not (@floored < Date.now()-1500)
+		return if floored
+
+		@getup() if @states.f?
+
+		@pose()
+
+		@roam()
+		@agro()
+		@ramble()
+
+		true
+
+	# @Override
+	after: ->
+		delete @states.s
+		delete @states.h
+		delete @states.u
+		delete @states.e
+		delete @states.q
+
+		true
+
+	rot: ->
+		if @died < Date.now() - gta.zombies.corpsefor
+			@at.withdraw this
+			@dtor()
+
+		true
+
+	roam: ->
+		t = Date.now()
+
+		a = @dynamicBody.GetAngle()
+
+		wander = @wander > t and @wander isnt -1
+
+		if @aim isnt -1
+
+			c = if wander then Math.PI/30 else Math.PI/10
+
+			if @turn > 0
+				n = a + c
+				n = @aim if n > @aim and n <= @aim + c*2
+
+			else if @turn < 0
+				n = a - c
+				n = @aim if n < @aim and n >= @aim - c*2
+
+			if n > Math.PI*2
+				n = n-(Math.PI*2)
+			else if n < 0
+				n = (Math.PI*2)-n
+
+			@aim = -1 if n is @aim
+
+			@dynamicBody.SetAngle n
+
+		a = @dynamicBody.GetAngle()
+
+		if wander
+			fifty = Math.random() > .5
+			look = Math.random() * Math.PI/3
+			@aimto if fifty then a+look else a-look
+
+			@theta = a + Math.PI/2
+			@limp true
+
+		0
+
+	aimto: (aim) -> # slowly
+		a = @dynamicBody.GetAngle()
+
+		@aim = aim
+
+		@turn = @aim - a
+
+		# normalize
+		@turn = -(((Math.PI*2)+a) - @aim) if @turn > Math.PI
+		@turn = ((Math.PI*2)-a) - @aim if @turn < -Math.PI
+		0
+
+	pointat: (v) ->
+		@theta = Math.atan2 @props.y-v.props.y, @props.x-v.props.x
+
+		r = @theta - Math.PI/2
+		r += Math.PI*2 if r < 0
+
+		@dynamicBody.SetAngle r
+
+		true
+
+	limp: (slow) ->
+		theta = @theta
+		theta += Math.PI
+
+		s = if slow then 0.18 else 0.8
+
+		x = s * Math.cos theta
+		y = s * Math.sin theta
+		to = new box2d.Common.Math.b2Vec2 x, y
+
+		theta = @theta
+
+		# @states.w = 1
+
+		@dynamicBody.ApplyImpulse to, @dynamicBody.GetWorldCenter()
+
+		true
+
+	hit: (from, using, damage) ->
+		return false if @dead or @kill
+
+		if from.type is 'Zombie'
+			floored = not (@floored < Date.now()-1500)
+			unless floored
+				#@health -= 0
+				#@checkup()
+				@state 'h', 0 # hit
+				#return if @kill
+				@fall()
+
+		else if using? and using.type is 'Gun'
+			@health -= damage
+			@state 'h', 1 # hit
+
+			#if Math.random() < .5
+			r = Math.floor Math.random() * 8
+			new Decal decal: "g#{r}", x: @props.x, y: @props.y
+
+		else if using? and using.type is 'Melee'
+			@health -= damage
+			@state 'h', 1
+
+			r = Math.floor Math.random() * 8
+			new Decal decal: "g#{r}", x: @props.x, y: @props.y
+		
+		@checkup()
+
+		true
+
+	checkup: ->
+		@kill = true if @health <= 0
+
+		true
+
+	die: ->
+		delete @states.f
+		delete @states.u
+		delete @states.s
+
+		@dead = true
+		@kill = false
+
+		@died = Date.now()
+		
+		@state 'd', Math.floor Math.random() * 10
+
+		gta.world.DestroyBody @dynamicBody
+		@dynamicBody.arbprop = null
+		@dynamicBody = null
+
+		gta.drop this if Math.random() < .3
+
+		gta.loot this if Math.random() < .6	
+		
+		true
+
+	fall: ->
+		delete @states.s
+
+		@floored = Date.now()
+
+		# gta.world.DestroyBody @dynamicBody
+		filter = new box2d.Dynamics.b2FilterData
+		filter = @fixture.GetFilterData()
+		filter.categoryBits = gta.masks.none
+		filter.maskBits = 0
+		@fixture.SetFilterData filter
+
+		@state 'f', 0 + Math.floor Math.random() * 3
+
+		true
+
+	getup: ->
+		delete @states.f
+
+		@state 'u', 1 # get up
+
+		filter = @fixture.GetFilterData()
+		filter.categoryBits = gta.masks.organic
+		filter.maskBits = gta.masks.solid | gta.masks.organic
+		@fixture.SetFilterData filter
+		true
+
+	attack: ->
+		@impact = true
+
+		r = 12
+
+		probe =
+			x: @props.x + 8 * Math.cos @props.r - (Math.PI/2)
+			y: @props.y + 8 * Math.sin @props.r - (Math.PI/2)
+
+		# todo: zombie can only attack in same chunk :c
+
+		for v in @at.visuals
+			continue if v is this
+
+			continue if v.props.interior isnt props.interior
+
+			if v.type is 'Zombie' or
+			   v.type is 'Player' or
+			   v.type is 'Mob'
+
+				x = Math.abs v.props.x - probe.x
+				y = Math.abs v.props.y - probe.y
+
+				range = Math.hypot x, y
+				near = range <= r
+				v.hit this, null, 20 if near
+
+		true
+
+	ramble: ->
+		t = Date.now()
+
+		@speak = t + 5000 + Math.random() * 10000 if @speak is -1
+
+		speak = @speak < t
+
+		if speak
+			@state 'q', "*munch*" # quote
+			@speak = -1
+
+		true
+
+	agro: ->
+		bait = null
+		carrion = null
+
+		closestAlive = gta.zombies.SEE + 1
+		closestCorpse = gta.zombies.CARRION
+
+		closest = 0
+
+		t = Date.now()
+		swung = @swung < t-1300
+
+		if not swung and not @impact
+			@attack() if @swung < t-700
+
+		return if not swung
+
+		for v in @at.visuals
+			continue unless v.type is 'Mob' or v.type is 'Player'
+
+			ply = v
+
+			# continue if ply.dead
+
+			continue if ply.props.interior isnt @props.interior
+
+			x = Math.abs ply.props.x - @props.x
+			y = Math.abs ply.props.y - @props.y
+			range = Math.hypot x, y
+
+			corpse = ply.dead
+
+			if corpse and range < closestCorpse
+				carrion = ply
+				closestCorpse = range
+
+			else if not corpse and range < closestAlive
+				bait = ply
+				closestAlive = range
+
+		if bait?
+			closest = closestAlive
+			bait = bait
+		else if carrion?
+			bait = carrion
+			closest = closestCorpse
+
+		# bait = bait or carrion
+
+		@bored = t + 1000 + Math.random() * 6000 if @bored is -1
+
+		bored = @bored < t
+
+		unhungry = bait? and bait.dead and @unhungry > t
+
+		target = bait? and not unhungry
+
+		if not target and bored
+
+			a = @dynamicBody.GetAngle()
+
+			r = Math.random()
+
+			if r < .25
+				@aimto Math.random() * (Math.PI*2)
+			else if r < .5
+				@wander = t + 1000 + Math.random() * 4000
+			else if r < .75
+				@wander = t + 500 + Math.random() * 750
+			#else if r < .9 # barf
+				#@barf = t + 1000
+			else
+				fifty = Math.random() > .5
+				look = Math.random() * Math.PI/3
+				@aimto if fifty then a+look else a-look
+
+			@bored = -1
+
+		return unless target
+
+		@bored = -1
+		@aim = -1
+		@wander = -1
+
+		carrion = bait.dead
+
+		if carrion and closest <= gta.zombies.EAT
+
+			@apetite = t + 150 + Math.random() * 3000 if @apetite is -1
+			@dined = t + 4000 + Math.random() * 20000 if @dined is -1
+
+			apetite = @apetite < t
+
+			if apetite
+				@state 'e', 1 # eat
+				@pointat bait
+				@apetite = -1
+				
+				dined = @dined < t
+
+				if dined
+					@dined = -1
+					@unhungry = t + 30000
+
+
+		else if carrion and closest <= gta.zombies.CARRION
+			@pointat bait
+			@limp true
+
+		else if not carrion and closest <= gta.zombies.SWING
+			@pointat bait
+
+			@swung = t
+			@impact = false
+
+			@state 's', 1 # swing
+
+		else if not carrion and closest <= gta.zombies.AGRO
+			@pointat bait
+			@limp()
+
+		else if not carrion and closest <= gta.zombies.SEE
+			@pointat bait
+
+		yes

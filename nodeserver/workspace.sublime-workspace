@@ -1,0 +1,621 @@
+{
+	"auto_complete":
+	{
+		"selected_items":
+		[
+		]
+	},
+	"buffers":
+	[
+		{
+			"file": "main.coffee",
+			"settings":
+			{
+				"buffer_size": 66581,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "/E/env/GTA2.0/play/coffee/gta2.0.coffee",
+			"settings":
+			{
+				"buffer_size": 8481,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "/E/env/GTA2.0/play/coffee/engine.coffee",
+			"settings":
+			{
+				"buffer_size": 14919,
+				"encoding": "UTF-8",
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "/E/env/GTA2.0/play/coffee/sprite.coffee",
+			"settings":
+			{
+				"buffer_size": 4371,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "/E/env/GTA2.0/play/coffee/car.coffee",
+			"settings":
+			{
+				"buffer_size": 15685,
+				"encoding": "UTF-8",
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "/E/env/GTA2.0/play/coffee/man.coffee",
+			"settings":
+			{
+				"buffer_size": 11961,
+				"encoding": "UTF-8",
+				"line_ending": "Windows"
+			}
+		}
+	],
+	"build_system": "Packages/Better CoffeeScript/CoffeeScript.sublime-build",
+	"build_system_choices":
+	[
+		[
+			[
+				[
+					"Packages/Better CoffeeScript/CoffeeScript.sublime-build",
+					""
+				],
+				[
+					"Packages/Better CoffeeScript/CoffeeScript.sublime-build",
+					"Run"
+				]
+			],
+			[
+				"Packages/Better CoffeeScript/CoffeeScript.sublime-build",
+				"Run"
+			]
+		]
+	],
+	"build_varint": "Run",
+	"command_palette":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+			[
+				"diff",
+				"Diffy Compare"
+			],
+			[
+				"com",
+				"Diffy Compare"
+			],
+			[
+				"cleanu",
+				"Diffy Cleanup"
+			],
+			[
+				"clen",
+				"Diffy Cleanup"
+			],
+			[
+				"set sy: htm",
+				"Set Syntax: HTML"
+			],
+			[
+				"remove",
+				"Package Control: Remove Package"
+			],
+			[
+				"comp",
+				"Diffy Compare"
+			],
+			[
+				"package re",
+				"Package Control: Remove Package"
+			],
+			[
+				"install",
+				"Package Control: Install Package"
+			],
+			[
+				"di",
+				"Diffy Compare"
+			],
+			[
+				"d",
+				"Diffy Compare"
+			],
+			[
+				"diffy",
+				"Diffy Cleanup"
+			],
+			[
+				"install p",
+				"Package Control: Install Package"
+			],
+			[
+				"remo",
+				"Package Control: Remove Package"
+			],
+			[
+				"install ",
+				"Install Package Control"
+			]
+		],
+		"width": 0.0
+	},
+	"console":
+	{
+		"height": 0.0,
+		"history":
+		[
+		]
+	},
+	"distraction_free":
+	{
+		"menu_visible": true,
+		"show_minimap": false,
+		"show_open_files": false,
+		"show_tabs": false,
+		"side_bar_visible": false,
+		"status_bar_visible": false
+	},
+	"file_history":
+	[
+		"/E/env/GTA2.0/stp.sublime-project",
+		"/E/env/xyz/style.css",
+		"/E/env/xyz/index.html",
+		"/E/env/xyz/app.coffee",
+		"/E/env/GTA2.0/play/coffee/editor.coffee",
+		"/E/env/three.js-master/examples/webgl_postprocessing_dof2.html",
+		"/E/env/three.js-master/examples/js/shaders/BokehShader2.js",
+		"/C/Users/Asdf/Desktop/b.js",
+		"/C/Users/Asdf/Desktop/a.js",
+		"/E/env/xyz/bokeh.js",
+		"/E/env/GTA2.0/play/coffee/gta2.0.coffee",
+		"/E/env/GTA2.0/play/coffee/chunk.coffee",
+		"/E/env/GTA2.0/play/coffee/map.coffee",
+		"/E/env/GTA2.0/README.md",
+		"/E/env/GTA2.0/index.html",
+		"/D/env/OpenSceneGraph-OpenSceneGraph-3.6.0/made/OpenSceneGraph.sln"
+	],
+	"find":
+	{
+		"height": 40.0
+	},
+	"find_in_files":
+	{
+		"height": 104.0,
+		"where_history":
+		[
+			".",
+			""
+		]
+	},
+	"find_state":
+	{
+		"case_sensitive": false,
+		"find_history":
+		[
+			"tile",
+			"@tile",
+			"'w'",
+			"your car",
+			"lights",
+			"splice",
+			"crumbs",
+			"shift",
+			"nav",
+			"crumbs",
+			"animation",
+			"childs",
+			"children",
+			"__popup",
+			"esc",
+			"zoomedin",
+			"print:",
+			"labels",
+			"branch = ",
+			"app.branch",
+			"branch = ",
+			"esc",
+			"active",
+			"branch",
+			"activebranch",
+			"app.branch",
+			"activebranch",
+			"zoomedout",
+			"zoomed",
+			"loader",
+			"center",
+			"pressed",
+			"nav",
+			"esc",
+			"crumbs",
+			"label",
+			".to",
+			"CorrugatedPlates",
+			"palette",
+			"camera = ",
+			"materialize",
+			"matte",
+			"cardboard",
+			"matte",
+			"app.matte",
+			"camera = ",
+			"matte",
+			"palette",
+			"oldrooftiles",
+			"shingles",
+			"materialize",
+			"OldRooftiles",
+			"boot",
+			"material",
+			"boot",
+			"materialize",
+			"material",
+			"tween",
+			"tween = ",
+			"tween",
+			"twenn",
+			"_on",
+			"twenn",
+			"update",
+			"tween",
+			"twenn",
+			"_from",
+			"position",
+			"tween",
+			"_on",
+			"tween",
+			"forwards",
+			"tween",
+			".to",
+			"tween",
+			".to",
+			"tween",
+			".to",
+			"spline",
+			"watch",
+			".to",
+			"usecomposer",
+			"composer = ",
+			"saopass.render",
+			"depth = ",
+			"float depth = ",
+			"depth = ",
+			"float tmp = ",
+			"getdepth",
+			"getDepth",
+			"screenPosition",
+			"DEPTH_PACKING",
+			"getDepth",
+			"DEPTH_PACKING",
+			"rtTextureDepth",
+			"mouseX",
+			"windowHalfY",
+			"vector = ",
+			"mouseX",
+			"mouseY",
+			"targetdistance",
+			"focalDepth",
+			"depth",
+			"bokeh",
+			"point",
+			"focalDepth",
+			"focaldepth",
+			"lineari",
+			"mouse",
+			"mouse2",
+			"mouse",
+			"windowHalfX",
+			"raycaster",
+			"intersect",
+			"controls",
+			"panning",
+			"jsdepthcal",
+			"rendertoscreen",
+			"rttexture",
+			"rttexturecol",
+			"rtTextureColor",
+			"rtTextureDepth",
+			"renderTarget",
+			"composer",
+			"postprocessing.scene",
+			"scene",
+			"renderToScreen",
+			"toscreen"
+		],
+		"highlight": true,
+		"in_selection": false,
+		"preserve_case": false,
+		"regex": false,
+		"replace_history":
+		[
+			"@gui."
+		],
+		"reverse": false,
+		"show_context": true,
+		"use_buffer2": true,
+		"whole_word": false,
+		"wrap": true
+	},
+	"groups":
+	[
+		{
+			"selected": 4,
+			"sheets":
+			[
+				{
+					"buffer": 0,
+					"file": "main.coffee",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 66581,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								16091,
+								16091
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Better CoffeeScript/CoffeeScript.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 9013.33333333,
+						"zoom_level": 1.0
+					},
+					"stack_index": 3,
+					"type": "text"
+				},
+				{
+					"buffer": 1,
+					"file": "/E/env/GTA2.0/play/coffee/gta2.0.coffee",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 8481,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								169,
+								169
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Better CoffeeScript/CoffeeScript.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 5,
+					"type": "text"
+				},
+				{
+					"buffer": 2,
+					"file": "/E/env/GTA2.0/play/coffee/engine.coffee",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 14919,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								454,
+								454
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Better CoffeeScript/CoffeeScript.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 1,
+					"type": "text"
+				},
+				{
+					"buffer": 3,
+					"file": "/E/env/GTA2.0/play/coffee/sprite.coffee",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 4371,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								354,
+								354
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Better CoffeeScript/CoffeeScript.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 2,
+					"type": "text"
+				},
+				{
+					"buffer": 4,
+					"file": "/E/env/GTA2.0/play/coffee/car.coffee",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 15685,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								2536,
+								2536
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Better CoffeeScript/CoffeeScript.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 1084.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 0,
+					"type": "text"
+				},
+				{
+					"buffer": 5,
+					"file": "/E/env/GTA2.0/play/coffee/man.coffee",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 11961,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								5703,
+								5703
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Better CoffeeScript/CoffeeScript.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 2943.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 4,
+					"type": "text"
+				}
+			]
+		}
+	],
+	"incremental_find":
+	{
+		"height": 22.0
+	},
+	"input":
+	{
+		"height": 0.0
+	},
+	"layout":
+	{
+		"cells":
+		[
+			[
+				0,
+				0,
+				1,
+				1
+			]
+		],
+		"cols":
+		[
+			0.0,
+			1.0
+		],
+		"rows":
+		[
+			0.0,
+			1.0
+		]
+	},
+	"menu_visible": true,
+	"output.exec":
+	{
+		"height": 96.0
+	},
+	"output.find_results":
+	{
+		"height": 0.0
+	},
+	"pinned_build_system": "",
+	"project": "/E/env/GTA2.0/project.sublime-project",
+	"replace":
+	{
+		"height": 42.0
+	},
+	"save_all_on_build": true,
+	"select_file":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"select_project":
+	{
+		"height": 500.0,
+		"last_filter": "",
+		"selected_items":
+		[
+			[
+				"",
+				"E:\\env\\GTA2.0\\project.sublime-project"
+			]
+		],
+		"width": 380.0
+	},
+	"select_symbol":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"selected_group": 0,
+	"settings":
+	{
+	},
+	"show_minimap": true,
+	"show_open_files": false,
+	"show_tabs": true,
+	"side_bar_visible": true,
+	"side_bar_width": 150.0,
+	"status_bar_visible": true,
+	"template_settings":
+	{
+	}
+}

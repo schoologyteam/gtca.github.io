@@ -1,0 +1,178 @@
+class gg.Mob extends gg.Man
+	constructor: (props) ->
+
+		props.z = 64 if not props.z?
+
+		super props
+
+		@type = 'Mob'
+
+		@swinging = false
+		@recoil = false
+		@floored = null
+
+		@footy = false
+
+		@walking = true
+		@running = false
+		@holding = no
+
+		@state props, true
+
+		@dynamicBody = null
+
+	dtor: ->
+		gg.world.DestroyBody @dynamicBody if @dynamicBody?
+		super
+		1
+
+	state: (o, first) ->
+		if o.states?
+			
+			if o.states.w?
+				@walking = 1 is o.states.w
+				@running = 2 is o.states.w
+
+				@walking = false if 0 is o.states.w
+				@running = false if 0 is o.states.w
+
+			if o.states.h?
+				gg.play gg.sounds.kungfu[ o.states.h ], this
+
+				#console.log "mov at #{this.props.x} #{this.props.y} #{this.props.z} is hit"
+
+				#pos = gg.listener.parent.position
+				#console.log "listener is at #{pos.x} #{pos.y} #{pos.z} shoots"
+
+			if o.states.r?
+				gg.play gg.sounds.kungfu[ 2 ], this
+				
+			if o.states.d?
+				@dead = true
+				@frame 4, @falls.y
+
+				@sprite.elevation = 1
+				part.sprite.elevation = 1 for part in @parts
+
+				@shadow.visible = false
+
+				gg.world.DestroyBody @dynamicBody if @dynamicBody?
+				@dynamicBody = null
+
+				if not first and not o.states.r?
+					gg.play gg.sounds.screams[ o.states.d ], this
+				
+			
+
+			if o.states.s?
+				@eating = false
+
+				@swinging = true
+				@recoil = false
+
+				gg.anim.call @punch, true
+				gg.anim.call @walkpunch, true
+				gg.anim.call @runpunch, true
+
+				# delete o.states.s
+
+			if o.states.e?
+				@eating = true
+
+				gg.anim.call @eat, true
+
+			if o.states.a? and not o.states.d?
+				gg.play gg.sounds.hesgotagun[ o.states.a ], this
+
+		true
+
+	patch: (o) ->
+		super o
+
+		@state o
+		
+		1
+
+	attack: ->
+		
+		1
+
+	animate: ->
+		# todo: rewrite this a bit
+
+		if @dead
+			@pose()
+			return
+
+		frame = 0
+		anim = @other
+
+		if @floored?
+			@frame @floored, @falls.y
+			return
+
+		else if @walking or @running
+
+			if @swinging
+				if not @running
+					anim = @walkpunch
+
+				else
+					anim = @runpunch
+
+				gg.anim.call anim
+
+				@punch.i = anim.i
+				@punch.timer = anim.timer
+				@walkpunch.i = anim.i
+				@walkpunch.timer = anim.timer
+				@runpunch.i = anim.i
+				@runpunch.timer = anim.timer
+
+				gg.anim.call @eat, true
+
+			else
+				anim = if not @running then @walk else @run
+
+				gg.anim.call anim
+				frame = anim.i
+
+				###if (anim.i is 1 or anim.i is 5) # and anim isnt @walk
+					if not @footy
+						@lastSound = gg.sounds.footsteps[ Math.floor Math.random()*4 ]
+						gg.play @lastSound, this, if @running then 60 else 10
+						# console.log 'wtf'
+						@footy = true
+					else
+						@footy = false###
+
+		else if @eating
+			anim = @eat
+			gg.anim.call anim
+
+			if anim.i is 7
+				console.log 'no eat'
+				@eating = false
+
+		else
+			gg.anim.call @walk, true
+			gg.anim.call @run, true
+
+			if @swinging
+				anim = @punch
+				gg.anim.call anim
+
+		frame = anim.i if anim.i?
+
+		if @swinging
+
+			if not @recoil and anim.i is 1
+				@recoil = true
+
+			else if @recoil and anim.i is 6
+				@swinging = false
+				@recoil = false
+
+		@frame frame, anim.y
+
+		1

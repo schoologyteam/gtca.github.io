@@ -1,0 +1,308 @@
+{
+	"err": {
+		"sprite": {
+			"width": 16,
+			"height": 16
+		},
+		"sheet": {
+			"width": 128,
+			"height": 128
+		},
+		"y": 0.5,
+		"frame": 0
+	},
+
+	"Dumpster": {
+		"texture": "nontile/things.png",
+		"solid": true,
+		"hasShadow": true,
+		"elevation": 2,
+		"sprite": {
+			"width": 33,
+			"height": 19
+		},
+		"sheet": {
+			"width": 128,
+			"height": 128
+		},
+		"x": 0,
+		"y": 0.8515625,
+		"frame": 0
+	},
+
+	"File cabinets": {
+		"texture": "nontile/furniture.png",
+		"solid": true,
+		"hasShadow": true,
+		"elevation": 2,
+		"sprite": {
+			"width": 22,
+			"height": 15
+		},
+		"sheet": {
+			"width": 128,
+			"height": 128
+		},
+		"x": 45,
+		"y": 0.8828125,
+		"frame": 0
+	},
+
+	"Table": {
+		"texture": "nontile/furniture.png",
+		"solid": true,
+		"hasShadow": true,
+		"elevation": 2,
+		"sprite": {
+			"width": 38,
+			"height": 21
+		},
+		"sheet": {
+			"width": 128,
+			"height": 128
+		},
+		"x": 0,
+		"y": 0.8359375,
+		"frame": 0
+	},
+
+	"Desk": {
+		"texture": "nontile/furniture.png",
+		"specular": 0,
+		"shininess": 1,
+		"solid": true,
+		"hasShadow": false,
+		"elevation": 2,
+		"sprite": {
+			"width": 38,
+			"height": 21
+		},
+		"sheet": {
+			"width": 128,
+			"height": 128
+		},
+		"x": 38,
+		"y": 0.8359375,
+		"frame": 0
+	},
+
+	"Chair": {
+		"texture": "nontile/furniture.png",
+		"solid": true,
+		"hasShadow": false,
+		"elevation": 2,
+		"sprite": {
+			"width": 14,
+			"height": 14
+		},
+		"sheet": {
+			"width": 128,
+			"height": 128
+		},
+		"x": 0,
+		"y": 0.7265625,
+		"frame": 0
+	},
+
+	"Couch": {
+		"texture": "nontile/furniture.png",
+		"solid": true,
+		"hasShadow": false,
+		"elevation": 2,
+		"sprite": {
+			"width": 39,
+			"height": 17
+		},
+		"sheet": {
+			"width": 128,
+			"height": 128
+		},
+		"x": 76,
+		"y": 0.8671875,
+		"frame": 0
+	},
+
+	"ATM": {
+		"texture": "nontile/technic/civil.png",
+		"solid": true,
+		"hasShadow": true,
+		"elevation": 2,
+		"sprite": {
+			"width": 22,
+			"height": 15
+		},
+		"sheet": {
+			"width": 128,
+			"height": 128
+		},
+		"x": 0,
+		"y": 0.8828125,
+		"frame": 0
+	},
+
+	"Vending Machine": {
+		"texture": "nontile/technic/civil.png",
+		"solid": true,
+		"hasShadow": true,
+		"elevation": 2,
+		"sprite": {
+			"width": 23,
+			"height": 15
+		},
+		"sheet": {
+			"width": 128,
+			"height": 128
+		},
+		"x": 22,
+		"y": 0.8828125,
+		"frame": 0
+	},
+
+	"Incubator": {
+		"texture": "nontile/technic/machines.png",
+		"solid": true,
+		"hasShadow": true,
+		"elevation": 2,
+		"sprite": {
+			"width": 16,
+			"height": 13
+		},
+		"sheet": {
+			"width": 128,
+			"height": 128
+		},
+		"y": 0.8984375,
+		"anim": {
+			"frames": 3,
+			"moment": 0.5,
+			"start": 0
+		},
+		"frame": 0
+	},
+
+	"Lab Freezer": {
+		"texture": "nontile/technic/machines.png",
+		"solid": true,
+		"hasShadow": true,
+		"elevation": 2,
+		"sprite": {
+			"width": 16,
+			"height": 10
+		},
+		"sheet": {
+			"width": 128,
+			"height": 128
+		},
+		"x": 48,
+		"y": 0.921875,
+		"anim": {
+			"frames": 2,
+			"moment": 0.7,
+			"start": 0
+		},
+		"frame": 0
+	},
+
+	"Vacuum Oven": {
+		"texture": "nontile/technic/machines.png",
+		"solid": true,
+		"hasShadow": true,
+		"elevation": 2,
+		"sprite": {
+			"width": 13,
+			"height": 11
+		},
+		"sheet": {
+			"width": 128,
+			"height": 128
+		},
+		"x": 80,
+		"y": 0.9140625,
+		"frame": 0
+	},
+
+	"Generator": {
+		"texture": "nontile/technic/machines.png",
+		"solid": true,
+		"hasShadow": true,
+		"elevation": 2,
+		"sprite": {
+			"width": 15,
+			"height": 10
+		},
+		"sheet": {
+			"width": 128,
+			"height": 128
+		},
+		"y": 0.8203125,
+		"anim": {
+			"frames": 2,
+			"moment": 0.11,
+			"start": 0
+		},
+		"frame": 0,
+		"IO": {
+			"I": false,
+			"O": {
+				"type": "Power"
+			}
+		}
+	},
+
+	"Worklight": {
+		"texture": "nontile/technic/machines.png",
+		"shininess": 1,
+		"solid": true,
+		"hasShadow": true,
+		"elevation": 3,
+		"sprite": {
+			"width": 18,
+			"height": 5
+		},
+		"sheet": {
+			"width": 128,
+			"height": 128
+		},
+		"x": 30,
+		"y": 0.859375,
+		"frame": 0
+	},
+
+	"Terminal": {
+		"solid": true,
+		"hasShadow": true,
+		"elevation": 2,
+		"sprite": {
+			"width": 16,
+			"height": 13
+		},
+		"sheet": {
+			"width": 128,
+			"height": 128
+		},
+		"y": 0.8984375,
+		"anim": {
+			"frames": 3,
+			"moment": 0.5,
+			"start": 0
+		},
+		"frame": 0
+	},
+
+	"Teleporter": {
+		"texture": "nontile/technic/machines.png",
+		"solid": false,
+		"hasShadow": false,
+		"elevation": 1,
+		"sprite": {
+			"width": 42,
+			"height": 42
+		},
+		"sheet": {
+			"width": 128,
+			"height": 128
+		},
+		"y": 0.4921875,
+		"frame": 0
+	}
+}

@@ -1,0 +1,14 @@
+fs = require 'fs'
+
+{print} = require 'sys'
+{spawn} = require 'child_process'
+exec = require('child_process').exec
+
+build = (callback) ->
+	coffee = exec "coffee -o js/ -c coffee/", (err, stdout, stderr) ->
+		console.log stdout
+		console.error stderr
+	
+
+task 'sbuild', 'Build all coffees', ->
+	build()

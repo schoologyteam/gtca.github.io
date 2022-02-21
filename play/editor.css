@@ -1,0 +1,48 @@
+#ed {
+	display: block;
+	position: absolute;
+	width: 100%;
+	bottom: 40px;
+	left: 20px;
+	line-height: 200%;
+	background: rgba(0,0,0,.5);
+}
+
+#ed a {
+	mmargin-right: 1ex;
+}
+
+#cats {
+	xz-index: 1;
+	xposition: absolute;
+	xbottom: 20px;
+	xleft: 20px;
+	bbackground: rgba(0,0,0,.5);
+	display: block;
+}
+
+#props {
+	display: inline;
+	color: lightgreen;
+}
+
+a.cat {
+	margin-right: 1ex;
+}
+
+a.cat:hover {
+	color: yellow;
+}
+
+#stys {
+	display: block;
+	max-height: 192px;
+	line-height: normal;
+	padding: 0;
+	overflow-y: auto;
+}
+
+img.mark {
+	position: relative;
+	outline: 1px solid red;
+}
